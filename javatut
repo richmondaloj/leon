@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Registration Form</title>
+
+        <link rel="stylesheet" href="form.css">
+
+        <script>
+            function hide_error()
+            {
+                document.getElementById("err1").style.display="none"; //removes error from screen after the UID field is clicked.
+            }
+
+
+            function validate()
+            {
+                var _uid = document.getElementById('uid').value;
+                alert(_uid);
+
+                var pattern = /^[0-9]{6}$/;
+
+                if(pattern.test(_uid))
+                {
+                    //return true;
+                    //document.getElementById("err1").style.display="none";
+                    location.replace("thankYou.html"); //takes the user to thank you page
+                }
+                else
+                {
+                    //return false;
+                    alert("Invalid Input");
+
+                    location.replace("form.html"); //returns to form
+                    document.getElementById("err1").style.display="block"; // shows the error
+                }
+
+              /*  if(/[0-9]{6}$/.test(_uid))
+                {
+                    //return true;
+                    location.replace("thankYou.html");
+                }*/
+            }
+
+        </script>
+    </head>
+    <body>
+        <form>
+            <fieldset>
+                <legend>
+                    Details for Registration
+                </legend>
+
+                <br><br>
+
+                <label>
+                    Name:
+                </label>
+                <input type="text" placeholder="Enter your name here..." name="name" size="30" maxlength="100">
+
+                <br> <br>
+
+                <label>
+                    UID:
+                </label>
+                <input type="text" id="uid" onfocus="hide_error();" placeholder="Enter your UID here..." name="uid" size="30" maxlength="6">
+                <span id="err1" style="dislay:none; color:red"> Invalid input</span>
+                <br> <br>
+
+                <label>
+                    Stream:  
+                </label>
+                <select name="stream">
+                    <option value="none"></option>
+                    <option value="BA">BA</option>
+                    <option value="BSc">BSc</option>
+                    <option value="BScIT">BScIT</option>
+                    <option value="BMM">BMM</option>
+                    <option value="BMS">BMS</option>
+                </select>
+
+                <br><br>
+            </fieldset>
+
+            <input type="button" value="Submit" onclick="validate()">
+
+            <input type="reset" value="Clear">
+        </form>
+    </body>
+</html>
